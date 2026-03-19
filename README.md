@@ -33,7 +33,7 @@ Copy the `skills/` directory into your Codex skills path (typically `~/.codex/sk
 
 ## Prerequisites
 
-- `incloud` CLI installed and configured (`incloud config use-context`)
+- [`incloud` CLI](https://gitlab.inhand.design/nezha/incloud-cli) installed and configured (`incloud config use-context`)
 
 ## Skills
 

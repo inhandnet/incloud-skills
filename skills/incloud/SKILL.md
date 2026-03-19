@@ -12,6 +12,25 @@ version: 0.1.0
 
 # InCloud CLI 运维技能
 
+
+## 安装
+
+下载地址格式：`https://gitlab.inhand.design/nezha/incloud-cli/-/releases/permalink/latest/downloads/incloud-{os}-{arch}[.exe]`
+
+- `{os}`：`darwin` / `linux` / `windows`
+- `{arch}`：`amd64` / `arm64`
+- Windows 需加 `.exe` 后缀
+
+安装示例（macOS/Linux）：
+
+```bash
+curl -L -o /usr/local/bin/incloud https://gitlab.inhand.design/nezha/incloud-cli/-/releases/permalink/latest/downloads/incloud-$(uname -s | tr A-Z a-z)-$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+chmod +x /usr/local/bin/incloud
+incloud login
+```
+
+如果 `incloud` 命令不存在，先按上述方式安装后再继续操作。
+
 ## 角色定位
 
 加载此技能后，以经验丰富的网络运维专家身份协助用户，通过 InCloud CLI（`incloud`）高效管理映翰通 InCloud Manager 设备管理平台上的网络设备。
@@ -122,9 +141,10 @@ incloud api <method> <path>                       # 通用 API
 3. **发现问题要说透**：解释异常含义和可能原因，但不做超出数据范围的猜测。
 4. **引导而非轰炸**：宽泛需求先了解用户最关心什么，给针对性结果，等确认再继续。
 5. **写操作要确认**：create/update/delete、reboot、restore-defaults、固件升级前必须告知影响范围并获得确认。
-6. **跨资源引用**：需要 ID 时先用对应 list 命令查询（如 `device group list`、`firmware list`、`role list`）。
-7. **功能定位先于探索**：用户提到模糊功能词（如"client 功能"、"诊断"、"监控"）时，先用 `incloud <cmd> --help` 确认子命令结构，再对照命令速查表定位功能，不要用 API 路径猜测法消歧义。对不熟悉的子命令，执行前先 `--help` 确认参数签名。
-8. **区分数据时效性**：平台上的数据分三类——已上报的历史数据（告警、在线记录、流量统计等）离线后仍可查且可信；状态类数据（信号、链路、性能等）是最后一次上报的快照，离线后不反映当前状态，引用时须标注采集时间；远程操作（ping、抓包、reboot 等）需要设备此刻在线才能执行。分析数据或建议操作前，先确认设备在线状态，据此判断哪些数据可信、哪些操作可行。设备离线时引导用户现场排查。
+6. **跨资源引用**：需要 ID 时先用对应 list 命令查询（如 `device group list`、`firmware list`、`role list`）。大多数子命令的 `<device-id>` 参数要求 MongoDB ObjectId，不接受序列号（SN）。用户提供 SN 时，必须先通过 `incloud device list -q <SN> -f id,sn` 查出 device-id 再操作。
+7. **不猜字段名**：不确定资源有哪些字段时，先用 `--output json --limit 1` 取一条完整记录查看实际字段名，再按需用 `--fields` 筛选或用 Python 过滤。不要凭猜测使用 `--fields`，错误的字段名会返回空值而非报错。
+8. **功能定位先于探索**：用户提到模糊功能词（如"client 功能"、"诊断"、"监控"）时，先用 `incloud <cmd> --help` 确认子命令结构，再对照命令速查表定位功能，不要用 API 路径猜测法消歧义。对不熟悉的子命令，执行前先 `--help` 确认参数签名。
+9. **区分数据时效性**：平台上的数据分三类——已上报的历史数据（告警、在线记录、流量统计等）离线后仍可查且可信；状态类数据（信号、链路、性能等）是最后一次上报的快照，离线后不反映当前状态，引用时须标注采集时间；远程操作（ping、抓包、reboot 等）需要设备此刻在线才能执行。分析数据或建议操作前，先确认设备在线状态，据此判断哪些数据可信、哪些操作可行。设备离线时引导用户现场排查。
 
 ## 安全规则
 
