@@ -4,11 +4,11 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 
 ## Installation
 
-### Marketplace
+### Claude Code Plugin
 
 ```
-/plugin marketplace add gitlab.inhand.design/nezha/incloud-skills
-/plugin install incloud-skills
+/plugin marketplace add https://gitlab.inhand.design/nezha/incloud-skills.git
+/plugin install incloud-skills@incloud-skills
 ```
 
 ### Manually

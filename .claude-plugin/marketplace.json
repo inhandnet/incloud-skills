@@ -1,0 +1,13 @@
+{
+  "name": "incloud-skills",
+  "owner": {
+    "name": "j3r0lin"
+  },
+  "plugins": [
+    {
+      "name": "incloud-skills",
+      "source": "./",
+      "description": "Skills for managing InCloud Manager platform via incloud CLI"
+    }
+  ]
+}
