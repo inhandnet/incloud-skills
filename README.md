@@ -8,7 +8,7 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 
 ```
 /plugin marketplace add https://gitlab.inhand.design/nezha/incloud-skills.git
-/plugin install incloud-skills@incloud-skills
+/plugin install incloud@incloud-skills
 ```
 
 ### Manually

@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "incloud-skills",
+      "name": "incloud",
       "source": "./",
       "description": "Skills for managing InCloud Manager platform via incloud CLI"
     }
