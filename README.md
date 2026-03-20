@@ -39,4 +39,4 @@ Copy the `skills/` directory into your Codex skills path (typically `~/.codex/sk
 
 | Skill | Description |
 |-------|-------------|
-| [incloud](skills/incloud) | Manage InCloud Manager platform resources — device monitoring, remote diagnostics, configuration, alerts, firmware upgrades, SD-WAN, InConnect VPN, and platform administration |
+| [incloud](skills/incloud) | Manage InCloud Manager platform resources — device monitoring, remote diagnostics, configuration, alerts, firmware upgrades, SD-WAN, InCloud Connector, and platform administration |
