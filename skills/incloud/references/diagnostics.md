@@ -53,7 +53,7 @@ incloud device exec flowscan-status <id>              # 查看流量扫描状态
 
 ```bash
 incloud device config get <id>                           # 查看当前配置
-incloud device config update <id> --body '{"key":"val"}' # 更新配置
+incloud device config update <id> --payload '{"key":"val"}' # 更新配置
 incloud device config copy <id> --target <target-ids>    # 复制配置到其他设备
 incloud device config snapshots list <id>                # 查看配置变更历史
 incloud device config snapshots get <id> <snapshot-id>   # 查看某次快照详情
@@ -64,6 +64,7 @@ incloud device config abort <id>                         # 终止待下发的配
 
 配置操作注意事项：
 - 更新前先 `config get` 查看当前配置，了解现有值
+- 需要构造配置 JSON 时，先用 `config schema get` 获取 JSON Schema 定义，再用 `config schema validate` 校验。详见 `references/ai-config-workflow.md`
 - 复杂配置变更建议先在单台设备测试，确认无误后再用 `config copy` 批量下发
 - 配置回滚前先查看快照详情，确认要恢复的版本
 - 下发失败时用 `config error` 查看具体错误原因

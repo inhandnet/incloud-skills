@@ -75,8 +75,12 @@ incloud device config get/update                  # 配置
 incloud device config copy                        # 复制配置
 incloud device config snapshots list/get/restore  # 配置快照
 incloud device config error                       # 配置下发错误
+incloud device config schema list/get             # 配置 Schema 查询
+incloud device config schema overview             # 配置概览（依赖关系）
+incloud device config schema validate             # 配置 JSON 校验
 incloud device log syslog/mqtt/diagnostic         # 日志
 incloud device group list/create/update/delete    # 分组
+incloud device group firmwares                    # 分组固件版本分布
 incloud device shadow get/list/update/delete      # 影子文档
 incloud device location get/set/refresh/unpin     # 定位
 incloud device assign/unassign                    # 分组分配
@@ -127,11 +131,12 @@ incloud api <method> <path>                       # 通用 API
 
 ### 全局选项
 
-- `--output table|json|yaml` — 输出格式（默认 json）
+- `--output table|json|yaml` — 输出格式（默认 json）。**偏好使用 yaml**：YAML 比 JSON 更紧凑（无大括号、无键引号、无逗号），显著节省 token，可读性也更好。除非用户明确要求 json/table，否则一律加 `--output yaml`。
 - `--fields` / `-f` — 选择返回字段（同时减少 API 传输量）
 - `--page`（默认 1）、`--limit`（默认 20）、`--sort` — 分页与排序
 - `--search` / `-q` — 全文搜索
 - `--after` / `--before` — 时间过滤（ISO 8601）
+- `--jq <expr>` — 对 JSON 输出执行 jq 表达式过滤（内置，无需安装 jq）。字符串结果自动 raw 输出（无引号），支持 `@csv`/`@tsv` 格式化。隐含 `-o json`。示例：`incloud device list --jq '.result[].name'`、`incloud device get <id> --jq '{name, sn: .serialNumber}'`
 - `--context` — 指定环境上下文
 
 ## 工作原则
@@ -142,9 +147,10 @@ incloud api <method> <path>                       # 通用 API
 4. **引导而非轰炸**：宽泛需求先了解用户最关心什么，给针对性结果，等确认再继续。
 5. **写操作要确认**：create/update/delete、reboot、restore-defaults、固件升级前必须告知影响范围并获得确认。
 6. **跨资源引用**：需要 ID 时先用对应 list 命令查询（如 `device group list`、`firmware list`、`role list`）。大多数子命令的 `<device-id>` 参数要求 MongoDB ObjectId，不接受序列号（SN）。用户提供 SN 时，必须先通过 `incloud device list -q <SN> -f id,sn` 查出 device-id 再操作。
-7. **不猜字段名**：不确定资源有哪些字段时，先用 `--output json --limit 1` 取一条完整记录查看实际字段名，再按需用 `--fields` 筛选或用 Python 过滤。不要凭猜测使用 `--fields`，错误的字段名会返回空值而非报错。
+7. **不猜字段名**：不确定资源有哪些字段时，先用 `--output yaml --limit 1` 取一条完整记录查看实际字段名，再按需用 `--fields` 筛选或用 Python 过滤。不要凭猜测使用 `--fields`，错误的字段名会返回空值而非报错。
 8. **功能定位先于探索**：用户提到模糊功能词（如"client 功能"、"诊断"、"监控"）时，先用 `incloud <cmd> --help` 确认子命令结构，再对照命令速查表定位功能，不要用 API 路径猜测法消歧义。对不熟悉的子命令，执行前先 `--help` 确认参数签名。
-9. **区分数据时效性**：平台上的数据分三类——已上报的历史数据（告警、在线记录、流量统计等）离线后仍可查且可信；状态类数据（信号、链路、性能等）是最后一次上报的快照，离线后不反映当前状态，引用时须标注采集时间；远程操作（ping、抓包、reboot 等）需要设备此刻在线才能执行。分析数据或建议操作前，先确认设备在线状态，据此判断哪些数据可信、哪些操作可行。设备离线时引导用户现场排查。
+9. **写操作前先 GET**：执行任何 update/delete 前，先用对应的 get 命令取一次当前资源状态，以此为基础构造变更，避免字段遗漏或覆盖。当 CLI 必填项与需求冲突时，以 GET 响应为 payload 基础，直接切换到 `incloud api` 操作。
+10. **区分数据时效性**：平台上的数据分三类——已上报的历史数据（告警、在线记录、流量统计等）离线后仍可查且可信；状态类数据（信号、链路、性能等）是最后一次上报的快照，离线后不反映当前状态，引用时须标注采集时间；远程操作（ping、抓包、reboot 等）需要设备此刻在线才能执行。分析数据或建议操作前，先确认设备在线状态，据此判断哪些数据可信、哪些操作可行。设备离线时引导用户现场排查。
 
 ## 安全规则
 
@@ -159,3 +165,5 @@ incloud api <method> <path>                       # 通用 API
 - **`references/diagnostics.md`** — 设备离线排查、网络连接问题诊断、配置管理、固件升级流程
 - **`references/signal-analysis.md`** — 蜂窝网络信号质量评估标准表和分析方法
 - **`references/log-analysis.md`** — 设备日志模块分类、问题类型映射、时间窗口建议
+- **`references/fleet-inspection.md`** — 批量巡检与健康评估：设备筛选、离线识别、信号/资源边缘设备、固件版本分布、容量评估、告警汇总
+- **`references/ai-config-workflow.md`** — AI 配置工作流：Schema 发现、JSON 构造、校验、写入的完整流程，以及数组/对象语义、依赖检查、常见配置场景
