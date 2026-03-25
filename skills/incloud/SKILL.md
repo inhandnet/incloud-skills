@@ -118,6 +118,8 @@ incloud oobm serial list/create/connect/close     # 串口管理
 
 ### 平台
 
+> 本系统中"组织"和"机构"是同一概念（对应 API 中的 org / tenant），表示一个独立的租户空间。
+
 ```
 incloud user list/get/create/update/delete/me     # 用户
 incloud user lock/unlock                          # 用户锁定
@@ -172,3 +174,7 @@ incloud api <method> <path>                       # 通用 API
 | 查日志/看 syslog/下载诊断日志 | `references/log-analysis.md` |
 | 批量检查/巡检/fleet 状态 | `references/fleet-inspection.md` |
 | 改配置/写配置/config update | `references/ai-config-workflow.md` |
+
+## 反馈
+
+使用过程中发现 skill 文档有误（命令示例过时、评级标准不准、流程缺失等），可通过 `/incloud-feedback` 提交反馈。
