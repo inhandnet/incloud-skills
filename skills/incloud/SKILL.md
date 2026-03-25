@@ -132,7 +132,7 @@ incloud api <method> <path>                       # 通用 API
 
 ### 全局选项
 
-- `--output table|json|yaml` — 输出格式（默认 json）。**偏好使用 yaml**：YAML 比 JSON 更紧凑（无大括号、无键引号、无逗号），显著节省 token，可读性也更好。除非用户明确要求 json/table，否则一律加 `--output yaml`。
+- `--output table|json|yaml` — 输出格式（默认 json）。**偏好使用 yaml**：YAML 比 JSON 更紧凑（无大括号、无键引号、无逗号），显著节省 token，可读性也更好。除非用户明确要求 json/table，否则一律加 `--output yaml`。**例外：时序数据**（signal list、antenna、perf、datausage 等带时间戳的序列）使用 `--output table`，表格的行列结构更适合观察趋势变化。
 - `--fields` / `-f` — 选择返回字段（同时减少 API 传输量）
 - `--page`（默认 1）、`--limit`（默认 20）、`--sort` — 分页与排序
 - `--search` / `-q` — 全文搜索
@@ -159,12 +159,14 @@ incloud api <method> <path>                       # 通用 API
 - 不在命令中包含明文密码或敏感凭证
 - 切换环境（`incloud config use-context`）前确认目标环境，避免误操作生产环境
 
-## 诊断与分析参考
+## 按需加载参考文档
 
-详细的诊断流程、信号质量评估标准、日志分析指南，参考以下文件：
+执行命令前，根据用户请求匹配下表，先读取对应 reference 再行动：
 
-- **`references/diagnostics.md`** — 设备离线排查、网络连接问题诊断、配置管理、固件升级流程
-- **`references/signal-analysis.md`** — 蜂窝网络信号质量评估标准表和分析方法
-- **`references/log-analysis.md`** — 设备日志模块分类、问题类型映射、时间窗口建议
-- **`references/fleet-inspection.md`** — 批量巡检与健康评估：设备筛选、离线识别、信号/资源边缘设备、固件版本分布、容量评估、告警汇总
-- **`references/ai-config-workflow.md`** — AI 配置工作流：Schema 发现、JSON 构造、校验、写入的完整流程，以及数组/对象语义、依赖检查、常见配置场景
+| 用户请求涉及 | 读取 |
+|-------------|------|
+| 设备离线/断网/连不上/重启/固件升级 | `references/diagnostics.md` |
+| 信号差/信号弱/RSSI/SINR/RSRP | `references/signal-analysis.md` |
+| 查日志/看 syslog/下载诊断日志 | `references/log-analysis.md` |
+| 批量检查/巡检/fleet 状态 | `references/fleet-inspection.md` |
+| 改配置/写配置/config update | `references/ai-config-workflow.md` |

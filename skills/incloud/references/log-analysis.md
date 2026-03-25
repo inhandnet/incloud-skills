@@ -5,7 +5,7 @@
 ```bash
 incloud device log syslog <id>        # 设备系统日志（网络/VPN/WiFi/DNS 等各模块，来自设备侧）
 incloud device log mqtt <id>          # 设备与平台的 MQTT 通信记录（连接/断开/消息收发，来自平台侧）
-incloud device log diagnostic <id>    # 下载诊断日志包
+incloud device log diagnostic <id>    # 下载诊断日志包（输出 .tar.gz 文件；--file 指定路径，否则写临时文件）
 ```
 
 ## 日志模块分类
