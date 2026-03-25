@@ -121,6 +121,7 @@ incloud oobm serial list/create/connect/close     # 串口管理
 ```
 incloud user list/get/create/update/delete/me     # 用户
 incloud user lock/unlock                          # 用户锁定
+incloud user identity list                        # 可切换的组织列表
 incloud role list                                 # 角色
 incloud org list/get/create/update/delete         # 组织
 incloud org self/update-self                      # 当前组织
@@ -138,6 +139,7 @@ incloud api <method> <path>                       # 通用 API
 - `--search` / `-q` — 全文搜索
 - `--after` / `--before` — 时间过滤（ISO 8601）
 - `--jq <expr>` — 对 JSON 输出执行 jq 表达式过滤（内置，无需安装 jq）。字符串结果自动 raw 输出（无引号），支持 `@csv`/`@tsv` 格式化。隐含 `-o json`。示例：`incloud device list --jq '.result[].name'`、`incloud device get <id> --jq '{name, sn: .serialNumber}'`
+- `--tenant <org-id>` — 切换组织上下文（发送 X-Api-Oid header）。用于多组织用户在外部组织下操作。先用 `incloud user identity list` 查看可切换的组织列表。
 - `--context` — 指定环境上下文
 
 ## 工作原则
