@@ -177,4 +177,9 @@ incloud api <method> <path>                       # 通用 API
 
 ## 反馈
 
-使用过程中发现 skill 文档有误（命令示例过时、评级标准不准、流程缺失等），可通过 `/incloud-feedback` 提交反馈。
+遇到以下情况时，加载 `references/feedback.md` 开始反馈流程：
+
+- skill 中的命令示例执行报错（参数变了、命令不存在了）
+- 按 skill 流程操作但结果不符合预期
+- 用户指出 skill 文档内容有误
+- 用户说"这个不对"、"帮我反馈"、"skill 有问题"等

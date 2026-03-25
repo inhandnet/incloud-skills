@@ -1,16 +1,6 @@
----
-name: incloud-feedback
-description: >-
-  Use when the user wants to report a problem with incloud skill documentation,
-  such as "帮我反馈", "这个不对", "skill 有问题", "命令示例不对", "文档需要更新",
-  "怎么反馈", "report skill issue", or when the user encounters incorrect guidance
-  from the incloud skill and wants to let the maintainer know.
-version: 0.1.0
----
-
 # InCloud Skill 反馈
 
-当用户在使用 incloud skill 过程中发现问题（命令示例过时、评级标准不准、流程缺失、文档错误等），通过本 skill 引导收集结构化反馈并提交到 GitHub。
+当用户在使用 incloud skill 过程中发现问题（命令示例过时、评级标准不准、流程缺失、文档错误等），引导收集结构化反馈并提交到 GitHub。
 
 ## 反馈收集流程
 
