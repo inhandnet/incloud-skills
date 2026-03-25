@@ -7,8 +7,8 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 ### Claude Code Plugin
 
 ```
-/plugin marketplace add https://gitlab.inhand.design/nezha/incloud-skills.git
-/plugin install incloud@incloud-skills
+/plugin marketplace add inhandnet/incloud-skills
+/plugin install incloud@inhandnet-incloud-skills
 ```
 
 ### Manually
