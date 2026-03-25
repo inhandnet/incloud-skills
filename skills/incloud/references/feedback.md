@@ -24,9 +24,9 @@
 将收集的信息组装为结构化文本，写入临时文件后提交：
 
 ```bash
-# 将反馈内容写入临时文件
+# 将反馈内容写入临时文件（推荐，避免 shell 转义截断）
 cat > /tmp/feedback.md << 'EOF'
-[signal-analysis.md] SINR 评级标准与实际输出不一致
+[incloud-skill][signal-analysis.md] SINR 评级标准与实际输出不一致
 
 问题：SINR=1dB 被描述为"极差"，但评级表定义 0~10 为"一般"
 涉及文件：references/signal-analysis.md
@@ -44,7 +44,8 @@ incloud feedback create --content @/tmp/feedback.md --file screenshot.png
 
 ## 注意事项
 
+- content 首行必须加 `[incloud-skill]` 前缀，便于后台按来源筛选（如 `[incloud-skill][文件名] 问题概述`）
+- `--content` 优先使用文件形式（`--content @/tmp/feedback.md`），inline 字符串在内容含引号、换行等特殊字符时易被 shell 截断
 - `--content` 上限 1000 字，用于简要描述问题。完整会话记录、长日志等大内容保存为文件通过 `--file` 作为附件上传（单个附件上限 20MB，最多 10 个）
 - 反馈内容用中文，命令和技术术语保持原样
 - 不要在反馈中包含用户的认证信息、token 或敏感数据
-- 内容较短时可直接用 `--content "..."` 传入，无需写文件
