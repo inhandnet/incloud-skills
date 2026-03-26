@@ -113,9 +113,15 @@ incloud connector network list/create/...         # InCloud Connector 网络
 incloud connector device list/add/...             # InCloud Connector 设备
 incloud connector account list/create/...         # InCloud Connector 账户
 incloud connector endpoint list/create/...        # InCloud Connector 端点
-incloud oobm list/create/connect/close            # 带外管理
-incloud oobm serial list/create/connect/close     # 串口管理
-incloud tunnel open-web/open-cli/close            # 远程访问隧道
+incloud oobm list/create/update/delete             # 带外管理资源（路由器背后的网络设备）
+incloud oobm connect/close                        # 建立/关闭隧道，远程访问路由器背后的设备（SSH/Telnet/HTTP 等任意端口）
+incloud oobm serial list/create/update/delete     # 串口配置（路由器串口连接的设备）
+incloud oobm serial connect/close                 # 建立/关闭隧道，远程访问串口控制台
+incloud tunnel open-web <device-id>               # 远程访问设备 Web 管理界面（浏览器）
+incloud tunnel open-cli <device-id>               # 远程访问设备命令行终端（浏览器）
+incloud tunnel open-cli --forward                  # 转发到本地端口，之后可用 ssh/telnet localhost 直连设备
+incloud tunnel forward <tunnel-id> --token <jwt>  # 转发已有隧道到本地端口（适用于所有隧道：open-cli、open-web、oobm connect）
+incloud tunnel close <tunnel-id>                  # 关闭隧道
 incloud tunnel logs                               # 隧道连接日志
 ```
 
