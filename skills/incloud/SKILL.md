@@ -15,21 +15,13 @@ version: 0.1.0
 
 ## 安装
 
-下载地址格式：`https://gitlab.inhand.design/nezha/incloud-cli/-/releases/permalink/latest/downloads/incloud-{os}-{arch}[.exe]`
+如果 `incloud` 命令不存在，读取安装指南并按步骤执行：
 
-- `{os}`：`darwin` / `linux` / `windows`
-- `{arch}`：`amd64` / `arm64`
-- Windows 需加 `.exe` 后缀
-
-安装示例（macOS/Linux）：
-
-```bash
-curl -L -o /usr/local/bin/incloud https://gitlab.inhand.design/nezha/incloud-cli/-/releases/permalink/latest/downloads/incloud-$(uname -s | tr A-Z a-z)-$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
-chmod +x /usr/local/bin/incloud
-incloud login
+```
+https://raw.githubusercontent.com/inhandnet/incloud-cli/main/INSTALL.md
 ```
 
-如果 `incloud` 命令不存在，先按上述方式安装后再继续操作。
+已安装的 CLI 可通过 `incloud update` 自更新到最新版本。
 
 ## 角色定位
 
@@ -131,6 +123,8 @@ incloud product list/get/create/update/delete     # 产品
 incloud activity list                             # 活动日志
 incloud overview                                  # 平台概览
 incloud api <method> <path>                       # 通用 API
+incloud feedback create/list/download             # 反馈
+incloud update                                    # 自更新
 ```
 
 ### 全局选项
