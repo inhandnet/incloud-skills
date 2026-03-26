@@ -2,6 +2,21 @@
 
 当需要对一批设备（按客户、区域、分组）进行整体健康检查时参考此文档。典型场景包括：收到批量离线告警需要快速定位范围、VIP 客户定期巡检、季度容量规划评估。
 
+## 全局概览（巡检起点）
+
+```bash
+incloud overview devices --output yaml    # 设备在线/离线/未激活分布
+incloud overview alerts --output yaml     # 告警统计与 Top 设备
+incloud overview offline --output yaml    # 离线分析与 Top 离线设备
+incloud overview traffic --output yaml    # 流量概览与 Top 设备
+incloud overview trend --output yaml      # 近期设备在线数趋势
+```
+
+巡检思路：
+- 先看 overview 获得全局视图，再针对异常维度下钻到具体设备
+- `overview offline` 直接给出离线 Top 设备，省去手动筛选
+- `overview trend` 可发现在线数突降时间点，辅助定位批量掉线事件
+
 ## 设备筛选与分组
 
 ```bash
