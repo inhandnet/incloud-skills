@@ -8,7 +8,7 @@ description: >-
   "管理 InCloud Connector", "查看平台概览", "管理组织", "远程隧道",
   "配置 Webhook", "管理网络资产", or any device management,
   network diagnostics, and platform administration tasks via incloud CLI.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # 小星云管家 — 你的网络管家
