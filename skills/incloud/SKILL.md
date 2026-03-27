@@ -73,9 +73,10 @@ incloud device client online-events/online-stats   # 终端在线统计
 incloud device client rssi/sinr/throughput         # 终端信号与吞吐
 incloud device datausage/online                    # 设备用量与在线历史
 incloud device asset list/create/update/delete     # 网络资产
-incloud device exec ping/traceroute/capture       # 诊断
+incloud device exec ping/traceroute/capture       # 诊断（平台 API）
 incloud device exec reboot/restore-defaults       # 远程控制
 incloud device exec speedtest/speedtest-config    # 速度测试与配置
+incloud device exec cli <device-id> <command>     # 直连设备 CLI 执行 INOS/shell 命令
 incloud device config get/update                  # 配置
 incloud device config copy                        # 复制配置
 incloud device config snapshots list/get/diff/restore # 配置快照
@@ -123,6 +124,8 @@ incloud oobm serial connect/close                 # 建立/关闭隧道，远程
 incloud tunnel open-web <device-id>               # 远程访问设备 Web 管理界面（浏览器）
 incloud tunnel open-cli <device-id>               # 远程访问设备命令行终端（浏览器）
 incloud tunnel open-cli --forward                  # 转发到本地端口，之后可用 telnet/ssh localhost 直连设备（协议取决于设备类型）
+incloud tunnel cli <tunnel-id> <command>          # 通过已有隧道执行设备 CLI 命令（多轮诊断用）
+incloud tunnel get <tunnel-id>                    # 隧道详情
 incloud tunnel forward <tunnel-id> --token <jwt>  # 转发已有隧道到本地端口（适用于所有隧道：open-cli、open-web、oobm connect）
 incloud tunnel close <tunnel-id>                  # 关闭隧道
 incloud tunnel logs                               # 隧道连接日志
@@ -159,6 +162,10 @@ incloud update                                    # 自更新
 - `--jq <expr>` — 对 JSON 输出执行 jq 表达式过滤（内置，无需安装 jq）。字符串结果自动 raw 输出（无引号），支持 `@csv`/`@tsv` 格式化。隐含 `-o json`。示例：`incloud device list --jq '.result[].name'`、`incloud device get <id> --jq '{name, sn: .serialNumber}'`
 - `--tenant <org-id>` — 切换组织上下文。用于多组织用户在外部组织下操作。先用 `incloud user identity list` 查看可切换的组织列表。
 - `--context` — 指定环境上下文
+
+### 时间字段与时区
+
+时间字段有两种格式：末尾带 `Z` 的是 UTC（如 `2026-03-27T08:39:44Z`），不带的是本地时间。计算时间差时注意区分，先确认用户所在时区，向用户呈现时间时一律换算为本地时间。
 
 ### 常见 ID 字段辨析
 
