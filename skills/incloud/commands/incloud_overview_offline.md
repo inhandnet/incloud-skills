@@ -35,14 +35,18 @@ incloud overview offline [flags]
 ### Options
 
 ```
-      --after string        Start time (e.g. 2024-01-01 or 2024-01-01T00:00:00Z)
-      --before string       End time (e.g. 2024-01-31 or 2024-01-31T23:59:59Z)
-  -f, --fields strings      Fields to return and display
-      --group stringArray   Filter by device group ID (can be repeated)
-  -h, --help                help for offline
-      --limit int           Statistics list page size (default 20)
-      --n int               Number of top devices to show (default 10)
-      --page int            Statistics list page number (1-based) (default 1)
+      --after string                   Start time (e.g. 2024-01-01 or 2024-01-01T00:00:00Z)
+      --before string                  End time (e.g. 2024-01-31 or 2024-01-31T23:59:59Z)
+  -f, --fields strings                 Fields to return and display
+      --group stringArray              Filter by device group ID (can be repeated)
+  -h, --help                           help for offline
+      --limit int                      Statistics list page size (default 20)
+      --min-max-offline-duration int   Filter devices with daily max offline duration >= N seconds
+      --min-max-offline-times int      Filter devices with daily max offline times >= N
+      --min-offline-times int          Filter devices with total offline times >= N
+      --n int                          Number of top devices to show (default 10)
+      --page int                       Statistics list page number (1-based) (default 1)
+  -q, --query string                   Filter by device name or serial number
 ```
 
 ### Options inherited from parent commands

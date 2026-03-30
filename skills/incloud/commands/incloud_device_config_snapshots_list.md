@@ -31,7 +31,7 @@ incloud device config snapshots list <device-id> [flags]
 ```
       --after string     Filter history after this time (ISO 8601)
       --before string    Filter history before this time (ISO 8601)
-  -f, --fields strings   Fields to display in table mode
+  -f, --fields strings   Fields to return and display
   -h, --help             help for list
       --limit int        Number of items per page (default 20)
       --module string    Module name (defaults to 'default' on the server)

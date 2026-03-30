@@ -24,4 +24,5 @@ Submit feedback about the InCloud platform
 * [incloud feedback create](incloud_feedback_create.md)	 - Create a feedback entry
 * [incloud feedback download](incloud_feedback_download.md)	 - Download attachments from a feedback entry
 * [incloud feedback list](incloud_feedback_list.md)	 - List feedback entries
+* [incloud feedback resolve](incloud_feedback_resolve.md)	 - Update the resolution status of a feedback entry
 

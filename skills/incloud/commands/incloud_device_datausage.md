@@ -6,10 +6,34 @@ Device data usage statistics
 
 View device data usage (traffic) statistics at hourly, daily, or monthly granularity.
 
+```
+incloud device datausage [device-id] [flags]
+```
+
+### Examples
+
+```
+  # Daily data usage (default interval)
+  incloud device datausage 507f1f77bcf86cd799439011
+
+  # Hourly data usage
+  incloud device datausage 507f1f77bcf86cd799439011 --interval hourly
+
+  # Monthly data usage for a specific year
+  incloud device datausage 507f1f77bcf86cd799439011 --interval monthly --year 2024
+```
+
 ### Options
 
 ```
-  -h, --help   help for datausage
+      --after string      Start time (ISO 8601, e.g. 2024-01-01T00:00:00Z)
+      --before string     End time (ISO 8601, e.g. 2024-01-02T00:00:00Z)
+  -f, --fields strings    Fields to display in table mode
+  -h, --help              help for datausage
+      --interval string   Granularity: hourly, daily, monthly (default "daily")
+      --month string      Month to query (YYYY-MM, e.g. 2024-03)
+      --type string       Traffic type: cellular (default), wired, wireless, sim, esim, all, etc.
+      --year string       Year to query (YYYY, e.g. 2024)
 ```
 
 ### Options inherited from parent commands

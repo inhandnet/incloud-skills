@@ -25,11 +25,8 @@ incloud overview traffic [flags]
   # Top 5 devices
   incloud overview traffic --n 5
 
-  # JSON output
+  # JSON output (summary + trend + topDevices)
   incloud overview traffic -o json
-
-  # Table output with selected fields
-  incloud overview traffic -o table -f deviceName -f total
 ```
 
 ### Options
