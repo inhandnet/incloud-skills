@@ -163,7 +163,10 @@ incloud update                                    # 自更新
 - `--page`（默认 1）、`--limit`（默认 20）、`--sort` — 分页与排序
 - `--search` / `-q` — 全文搜索
 - `--after` / `--before` — 时间过滤（ISO 8601）
-- `--jq <expr>` — 对 JSON 输出执行 jq 表达式过滤（内置，无需安装 jq）。字符串结果自动 raw 输出（无引号），支持 `@csv`/`@tsv` 格式化。隐含 `-o json`。示例：`incloud device list --jq '.result[].name'`、`incloud device get <id> --jq '{name, sn: .serialNumber}'`
+- `--jq <expr>` — 内置 jq 过滤，隐含 `-o json`，字符串自动 raw 输出，支持 `@csv`/`@tsv`：
+  - 提取字段：`incloud device list --jq '.result[].name'`
+  - 投影对象：`incloud device get <id> --jq '{name, sn: .serialNumber}'`
+  - 统计总数：`incloud alert list --ack false --jq '.total'`（`.total` 是所有列表接口 envelope 的固定字段）
 - `--tenant <org-id>` — 切换组织上下文。用于多组织用户在外部组织下操作。先用 `incloud user identity list` 查看可切换的组织列表。
 - `--context` — 指定环境上下文
 
