@@ -24,6 +24,7 @@ InCloud Platform CLI
 * [incloud device](incloud_device.md)	 - Manage devices
 * [incloud feedback](incloud_feedback.md)	 - Submit feedback about the InCloud platform
 * [incloud firmware](incloud_firmware.md)	 - Manage firmwares
+* [incloud license](incloud_license.md)	 - Manage licenses
 * [incloud oobm](incloud_oobm.md)	 - Manage Out-of-Band Management resources
 * [incloud org](incloud_org.md)	 - Manage organizations
 * [incloud overview](incloud_overview.md)	 - Platform overview dashboard
