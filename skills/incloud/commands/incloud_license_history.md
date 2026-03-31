@@ -16,6 +16,9 @@ incloud license history <license-id> [flags]
   # View operation history
   incloud license history YFE5QYOTHKHBMSX
 
+  # Include device details in each history entry
+  incloud license history YFE5QYOTHKHBMSX --expand device
+
   # YAML output
   incloud license history YFE5QYOTHKHBMSX -o yaml
 
@@ -26,7 +29,8 @@ incloud license history <license-id> [flags]
 ### Options
 
 ```
-  -h, --help   help for history
+      --expand strings   Expand related resources (supported: device)
+  -h, --help             help for history
 ```
 
 ### Options inherited from parent commands

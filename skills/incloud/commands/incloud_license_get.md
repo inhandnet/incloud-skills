@@ -26,7 +26,7 @@ incloud license get <license-id> [flags]
 ### Options
 
 ```
-      --expand strings   Expand related resources (supported: licenseType, device, org)
+      --expand strings   Expand related resources (supported: device, org)
   -f, --fields strings   Fields to return and display
   -h, --help             help for get
 ```

@@ -20,13 +20,13 @@ incloud license type get <slug> [flags]
   incloud license type get professional -o yaml
 
   # Only specific fields
-  incloud license type get professional -f name -f features -f prices
+  incloud license type get professional -f name -f premiumServices -f upgrades
 ```
 
 ### Options
 
 ```
-      --expand strings   Expand related resources (e.g. prices)
+      --expand strings   Expand related resources (supported: prices)
   -f, --fields strings   Fields to return and display
   -h, --help             help for get
 ```
