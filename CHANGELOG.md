@@ -1,3 +1,16 @@
+# v0.3.0 (2026-04-01)
+
+## 新功能
+- **License 管理** — 新增完整的 license 管理命令参考（attach/detach/transfer/upgrade/align-expiry 等）
+
+## 改进
+- **README 重写** — 新增功能概览、多平台安装说明（CLI/Desktop/Web/IDE/Codex）、团队安装、故障排除等
+- **Prerequisites 简化** — CLI 无需预装，skill 会自动引导安装和登录；也支持手动安装
+- **Feedback 增强** — 自动采集 CLI 版本和环境信息，新增 AI 推理追踪和复现步骤模板
+- **License 文档修正** — 同步 CLI 最新的 `--expand` 字段修复（order/license/history）
+
+---
+
 # v0.2.1 (2026-03-30)
 
 ## 改进
