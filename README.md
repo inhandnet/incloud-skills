@@ -19,23 +19,10 @@ Once installed, talk to your AI agent in natural language to manage your InCloud
 
 ## Prerequisites
 
-Before installing the plugin, make sure you have the `incloud` CLI ready:
+- An [InCloud Manager](https://www.inhandnetworks.com/products/incloud-manager.html) account
 
-1. **Install the CLI** — follow the instructions at [`incloud` CLI](https://github.com/inhandnet/incloud-cli)
-
-2. **Log in** to your InCloud Manager account:
-
-   ```bash
-   incloud auth login
-   ```
-
-3. **Verify** the CLI is working:
-
-   ```bash
-   incloud device list --limit 1
-   ```
-
-   If this returns device data, you're all set.
+> [!NOTE]
+> The [`incloud` CLI](https://github.com/inhandnet/incloud-cli) is required but you don't need to install it beforehand — the skill will guide Claude through the CLI installation and login automatically on first use. You can also [install it manually](https://github.com/inhandnet/incloud-cli) if you prefer.
 
 ## Installation
 
