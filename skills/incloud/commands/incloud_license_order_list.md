@@ -35,7 +35,7 @@ incloud license order list [flags]
       --page int         Page number (starting from 1) (default 1)
       --sort string      Sort order (e.g. "createdAt,desc")
       --status string    Filter by status (open/complete/cancelled)
-      --type string      Filter by order type (license_purchase/license_renewal)
+      --type string      Filter by order type (license_purchase/license_renewal/sim_bill/service_purchase/service_renewal/service_upgrade)
 ```
 
 ### Options inherited from parent commands
