@@ -10,12 +10,12 @@
 ## 一次性执行（推荐）
 
 ```bash
-# INOS CLI 命令
-incloud device exec cli <device-id> --user adm --password 123456 "show interface"
+# INOS CLI 命令（默认凭证 adm/123456，但用户可能已修改，需确认）
+incloud device exec cli <device-id> --user <username> --password <password> "show interface"
 
 # BusyBox shell 命令（用 && 链接多个）
-incloud device exec cli <device-id> --user adm --password 123456 \
-  --shell --shell-password <shell-pass> "uname -a && free -m && ip route"
+incloud device exec cli <device-id> --user <username> --password <password> \
+  --shell --shell-password <shell-password> "uname -a && free -m && ip route"
 ```
 
 自动管理隧道（创建 → 登录 → 执行 → 关闭），单次约 6 秒。输出已去除 telnet 协商、ANSI 转义、命令回显和提示符。
@@ -26,8 +26,8 @@ incloud device exec cli <device-id> --user adm --password 123456 \
 
 ```bash
 incloud tunnel open-cli <device-id> --no-open     # 创建隧道
-incloud tunnel cli <tunnel-id> --user adm --password 123456 "show interface"
-incloud tunnel cli <tunnel-id> --user adm --password 123456 "show log"
+incloud tunnel cli <tunnel-id> --user <username> --password <password> "show interface"
+incloud tunnel cli <tunnel-id> --user <username> --password <password> "show log"
 incloud tunnel close <tunnel-id>                   # 用完关闭
 ```
 
