@@ -1,3 +1,17 @@
+# v0.4.0 (2026-04-15)
+
+## 新功能
+- **知识库子代理搜索** — 新增通过 subagent 搜索知识库的能力
+
+## 改进
+- **Log local 命令文档** — 新增 `incloud device log local` 实时读取设备本地日志的用法说明、与 syslog 的场景对比和时间窗口建议
+- **目录结构规范** — 将 `commands/` 移至 `references/commands/`，符合 skill 结构约定
+
+## 其他
+- 新增项目 `CLAUDE.md`，说明 `references/commands/` 为自动生成、发版需同步 `plugin.json`
+
+---
+
 # v0.3.0 (2026-04-01)
 
 ## 新功能
