@@ -16,8 +16,8 @@ incloud connector usage trend [flags]
 ### Options
 
 ```
-      --after string    Start date (YYYY-MM-DD, required)
-      --before string   End date (YYYY-MM-DD, required)
+      --after string    Start date (e.g. 2025-01-01, required)
+      --before string   End date (e.g. 2025-01-31, required)
   -h, --help            help for trend
 ```
 

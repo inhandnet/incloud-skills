@@ -29,8 +29,8 @@ incloud device datausage list [flags]
 ### Options
 
 ```
-      --after string     Start date (e.g. 2024-03-01)
-      --before string    End date (e.g. 2024-03-31)
+      --after string     Start date (e.g. 2025-01-01)
+      --before string    End date (e.g. 2025-01-31)
   -f, --fields strings   Fields to display in table mode
       --groups strings   Filter by device group IDs
   -h, --help             help for list

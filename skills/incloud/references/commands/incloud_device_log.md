@@ -26,6 +26,7 @@ View and download device logs from the InCloud platform.
 
 * [incloud device](incloud_device.md)	 - Manage devices
 * [incloud device log diagnostic](incloud_device_log_diagnostic.md)	 - Download and decrypt diagnostic log from device
+* [incloud device log local](incloud_device_log_local.md)	 - Read log files directly from the device (requires device online)
 * [incloud device log mqtt](incloud_device_log_mqtt.md)	 - View MQTT communication logs
 * [incloud device log syslog](incloud_device_log_syslog.md)	 - View device syslog
 

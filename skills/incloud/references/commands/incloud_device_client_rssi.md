@@ -13,8 +13,8 @@ incloud device client rssi <client-id> [flags]
 ### Options
 
 ```
-      --after string     Start time (ISO 8601, required)
-      --before string    End time (ISO 8601, required)
+      --after string     Start time (e.g. 2025-01-01, 2025-01-01T08:00:00, 2025-01-01T00:00:00Z)
+      --before string    End time (e.g. 2025-01-31, 2025-01-31T08:00:00, 2025-01-31T23:59:59Z)
   -f, --fields strings   Fields to display in table mode
   -h, --help             help for rssi
 ```

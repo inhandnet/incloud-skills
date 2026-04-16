@@ -19,8 +19,8 @@ incloud connector usage topk [flags]
 ### Options
 
 ```
-      --after string    Start date (YYYY-MM-DD, required)
-      --before string   End date (YYYY-MM-DD, required)
+      --after string    Start date (e.g. 2025-01-01, required)
+      --before string   End date (e.g. 2025-01-31, required)
   -h, --help            help for topk
       --n int           Number of top results to return (default 10)
       --type string     Filter by type: DEVICE or ACCOUNT (default: DEVICE)

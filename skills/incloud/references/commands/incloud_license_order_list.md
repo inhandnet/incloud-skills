@@ -26,8 +26,8 @@ incloud license order list [flags]
 ### Options
 
 ```
-      --after string     Filter orders created after this date (e.g. 2026-01-01)
-      --before string    Filter orders created before this date (e.g. 2026-03-31)
+      --after string     Start date (e.g. 2025-01-01)
+      --before string    End date (e.g. 2025-01-31)
       --expand strings   Expand related resources. Supported: creator, org
   -f, --fields strings   Fields to return and display
   -h, --help             help for list

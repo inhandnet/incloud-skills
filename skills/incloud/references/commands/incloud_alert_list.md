@@ -54,8 +54,8 @@ incloud alert list [flags]
 
 ```
       --ack string         Filter by acknowledgement status (true/false)
-      --after string       Filter alerts after this time (e.g. 2024-01-01T00:00:00Z)
-      --before string      Filter alerts before this time (e.g. 2024-01-31T23:59:59Z)
+      --after string       Start time (e.g. 2025-01-01, 2025-01-01T08:00:00, 2025-01-01T00:00:00Z)
+      --before string      End time (e.g. 2025-01-31, 2025-01-31T08:00:00, 2025-01-31T23:59:59Z)
       --device string      Filter by device ID
   -f, --fields strings     Fields to return and display
       --group string       Filter by device group ID

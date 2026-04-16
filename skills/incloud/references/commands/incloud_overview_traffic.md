@@ -32,8 +32,8 @@ incloud overview traffic [flags]
 ### Options
 
 ```
-      --after string     Start date (e.g. 2024-01-01)
-      --before string    End date (e.g. 2024-01-31)
+      --after string     Start date (e.g. 2025-01-01)
+      --before string    End date (e.g. 2025-01-31)
   -f, --fields strings   Fields to display in table output
   -h, --help             help for traffic
       --n int            Number of top devices to return (default 10)

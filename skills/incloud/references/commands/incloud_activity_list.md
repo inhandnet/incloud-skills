@@ -43,9 +43,9 @@ incloud activity list [flags]
 ```
       --action string    Filter by action type (e.g. device_created, device_deleted)
       --actor string     Filter by actor ID
-      --after string     Filter logs after this time (e.g. 2024-01-01T00:00:00Z)
+      --after string     Start time (e.g. 2025-01-01, 2025-01-01T08:00:00, 2025-01-01T00:00:00Z)
       --app string       Filter by application name
-      --before string    Filter logs before this time (e.g. 2024-01-31T23:59:59Z)
+      --before string    End time (e.g. 2025-01-31, 2025-01-31T08:00:00, 2025-01-31T23:59:59Z)
   -f, --fields strings   Fields to return and display
   -h, --help             help for list
       --limit int        Number of items per page (default 20)

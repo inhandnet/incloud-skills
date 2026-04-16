@@ -29,8 +29,8 @@ incloud overview trend [flags]
 ### Options
 
 ```
-      --after string     Start date (e.g. 2024-01-01 or 2024-01-01T00:00:00Z)
-      --before string    End date (e.g. 2024-03-31 or 2024-03-31T23:59:59Z)
+      --after string     Start time (e.g. 2025-01-01, 2025-01-01T08:00:00, 2025-01-01T00:00:00Z)
+      --before string    End time (e.g. 2025-01-31, 2025-01-31T08:00:00, 2025-01-31T23:59:59Z)
   -f, --fields strings   Fields to return and display
   -h, --help             help for trend
 ```
