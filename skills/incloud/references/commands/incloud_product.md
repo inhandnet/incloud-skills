@@ -25,6 +25,7 @@ List, create, update, delete, and manage products on the InCloud platform.
 ### SEE ALSO
 
 * [incloud](incloud.md)	 - InCloud Platform CLI
+* [incloud product compatibility](incloud_product_compatibility.md)	 - List product compatibilities
 * [incloud product create](incloud_product_create.md)	 - Create a product
 * [incloud product delete](incloud_product_delete.md)	 - Delete a product
 * [incloud product get](incloud_product_get.md)	 - Get product details

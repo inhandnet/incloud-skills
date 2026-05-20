@@ -31,5 +31,6 @@ View, update, and manage device configurations including layered config, history
 * [incloud device config get](incloud_device_config_get.md)	 - Get device configuration
 * [incloud device config schema](incloud_device_config_schema.md)	 - Browse and validate device configuration schemas
 * [incloud device config snapshots](incloud_device_config_snapshots.md)	 - Configuration snapshots
+* [incloud device config task](incloud_device_config_task.md)	 - Manage CLI configuration tasks
 * [incloud device config update](incloud_device_config_update.md)	 - Update device configuration
 

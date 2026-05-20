@@ -29,6 +29,9 @@ List, create, update, delete, and inspect device groups on the InCloud platform.
 * [incloud device group delete](incloud_device_group_delete.md)	 - Delete a device group
 * [incloud device group firmwares](incloud_device_group_firmwares.md)	 - List firmware versions in a device group
 * [incloud device group get](incloud_device_group_get.md)	 - Get device group details
+* [incloud device group layerfs](incloud_device_group_layerfs.md)	 - Manage device group filesystem snapshots
 * [incloud device group list](incloud_device_group_list.md)	 - List device groups
+* [incloud device group project](incloud_device_group_project.md)	 - Manage device group projects
+* [incloud device group registry](incloud_device_group_registry.md)	 - Manage device group container registries
 * [incloud device group update](incloud_device_group_update.md)	 - Update a device group
 
