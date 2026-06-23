@@ -1,11 +1,15 @@
-## incloud connector usage
+## incloud touch connection
 
-Connector traffic usage statistics
+Manage touch connections
+
+### Synopsis
+
+Create and disconnect remote access connections to touch clients.
 
 ### Options
 
 ```
-  -h, --help   help for usage
+  -h, --help   help for connection
 ```
 
 ### Options inherited from parent commands
@@ -20,8 +24,7 @@ Connector traffic usage statistics
 
 ### SEE ALSO
 
-* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
-* [incloud connector usage stats](incloud_connector_usage_stats.md)	 - Show overall traffic statistics
-* [incloud connector usage topk](incloud_connector_usage_topk.md)	 - Show top-K traffic consumption ranking
-* [incloud connector usage trend](incloud_connector_usage_trend.md)	 - Show daily traffic trend
+* [incloud touch](incloud_touch.md)	 - Manage DeviceTouch remote access
+* [incloud touch connection create](incloud_touch_connection_create.md)	 - Create touch connections
+* [incloud touch connection disconnect](incloud_touch_connection_disconnect.md)	 - Disconnect touch connections
 

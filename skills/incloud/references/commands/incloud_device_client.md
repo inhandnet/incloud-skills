@@ -33,7 +33,7 @@ List, inspect, and monitor clients connected to your devices.
 * [incloud device client online-events](incloud_device_client_online-events.md)	 - Client connect/disconnect events
 * [incloud device client online-stats](incloud_device_client_online-stats.md)	 - Client online statistics
 * [incloud device client rssi](incloud_device_client_rssi.md)	 - Client Wi-Fi signal strength (RSSI)
-* [incloud device client set-pos-ready](incloud_device_client_set-pos-ready.md)	 - Set POS Ready status for a client
+* [incloud device client set-pos-ready](incloud_device_client_set-pos-ready.md)	 - Set POS priority level for a client
 * [incloud device client sinr](incloud_device_client_sinr.md)	 - Client signal-to-interference ratio (SINR)
 * [incloud device client throughput](incloud_device_client_throughput.md)	 - Client throughput over time
 * [incloud device client update](incloud_device_client_update.md)	 - Update client name

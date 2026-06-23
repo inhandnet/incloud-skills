@@ -1,10 +1,10 @@
 ## incloud connector
 
-Manage InConnect connector networks
+Manage InCloud Manager connector networks
 
 ### Synopsis
 
-Create and manage InConnect connector VPN networks, accounts, devices, and endpoints.
+Create and manage InCloud Manager connector VPN networks, accounts, devices, and endpoints.
 
 ### Options
 

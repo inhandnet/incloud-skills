@@ -20,7 +20,7 @@ Manage endpoints in connector networks
 
 ### SEE ALSO
 
-* [incloud connector](incloud_connector.md)	 - Manage InConnect connector networks
+* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
 * [incloud connector endpoint create](incloud_connector_endpoint_create.md)	 - Create an endpoint in a connector network
 * [incloud connector endpoint delete](incloud_connector_endpoint_delete.md)	 - Delete endpoints from a connector network
 * [incloud connector endpoint list](incloud_connector_endpoint_list.md)	 - List endpoints in a connector network

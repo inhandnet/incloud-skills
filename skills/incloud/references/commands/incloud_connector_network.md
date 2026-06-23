@@ -20,7 +20,7 @@ Manage connector networks
 
 ### SEE ALSO
 
-* [incloud connector](incloud_connector.md)	 - Manage InConnect connector networks
+* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
 * [incloud connector network create](incloud_connector_network_create.md)	 - Create a connector network
 * [incloud connector network delete](incloud_connector_network_delete.md)	 - Delete connector networks
 * [incloud connector network get](incloud_connector_network_get.md)	 - Get connector network details

@@ -20,7 +20,7 @@ Manage connector accounts (VPN users)
 
 ### SEE ALSO
 
-* [incloud connector](incloud_connector.md)	 - Manage InConnect connector networks
+* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
 * [incloud connector account create](incloud_connector_account_create.md)	 - Create an account in a connector network
 * [incloud connector account delete](incloud_connector_account_delete.md)	 - Delete accounts from a connector network
 * [incloud connector account download-ovpn](incloud_connector_account_download-ovpn.md)	 - Download OpenVPN configuration file for an account

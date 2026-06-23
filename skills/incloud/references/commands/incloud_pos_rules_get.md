@@ -1,11 +1,19 @@
-## incloud connector usage
+## incloud pos rules get
 
-Connector traffic usage statistics
+Get a device's POS custom rules
+
+### Synopsis
+
+Display the POS custom rules configured for a specific device.
+
+```
+incloud pos rules get <device-id> [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for usage
+  -h, --help   help for get
 ```
 
 ### Options inherited from parent commands
@@ -20,8 +28,5 @@ Connector traffic usage statistics
 
 ### SEE ALSO
 
-* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
-* [incloud connector usage stats](incloud_connector_usage_stats.md)	 - Show overall traffic statistics
-* [incloud connector usage topk](incloud_connector_usage_topk.md)	 - Show top-K traffic consumption ranking
-* [incloud connector usage trend](incloud_connector_usage_trend.md)	 - Show daily traffic trend
+* [incloud pos rules](incloud_pos_rules.md)	 - Manage POS custom rules
 

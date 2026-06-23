@@ -1,11 +1,26 @@
-## incloud connector usage
+## incloud touch client get
 
-Connector traffic usage statistics
+Get a touch client
+
+### Synopsis
+
+Get details of a remote access client by its ID.
+
+```
+incloud touch client get <client-id> [flags]
+```
+
+### Examples
+
+```
+  # Get client details
+  incloud touch client get 507f1f77bcf86cd799439011
+```
 
 ### Options
 
 ```
-  -h, --help   help for usage
+  -h, --help   help for get
 ```
 
 ### Options inherited from parent commands
@@ -20,8 +35,5 @@ Connector traffic usage statistics
 
 ### SEE ALSO
 
-* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
-* [incloud connector usage stats](incloud_connector_usage_stats.md)	 - Show overall traffic statistics
-* [incloud connector usage topk](incloud_connector_usage_topk.md)	 - Show top-K traffic consumption ranking
-* [incloud connector usage trend](incloud_connector_usage_trend.md)	 - Show daily traffic trend
+* [incloud touch client](incloud_touch_client.md)	 - Manage touch clients
 

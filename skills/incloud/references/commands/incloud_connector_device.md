@@ -20,7 +20,7 @@ Manage devices in connector networks
 
 ### SEE ALSO
 
-* [incloud connector](incloud_connector.md)	 - Manage InConnect connector networks
+* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
 * [incloud connector device add](incloud_connector_device_add.md)	 - Add a device to a connector network
 * [incloud connector device candidates](incloud_connector_device_candidates.md)	 - List candidate devices that can be added to a connector network
 * [incloud connector device delete](incloud_connector_device_delete.md)	 - Remove devices from a connector network

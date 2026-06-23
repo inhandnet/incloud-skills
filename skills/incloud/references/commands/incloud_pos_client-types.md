@@ -1,11 +1,19 @@
-## incloud connector usage
+## incloud pos client-types
 
-Connector traffic usage statistics
+List the POS client-type dictionary
+
+### Synopsis
+
+List the client-type dictionary used to classify POS clients and author custom rules.
+
+```
+incloud pos client-types [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for usage
+  -h, --help   help for client-types
 ```
 
 ### Options inherited from parent commands
@@ -20,8 +28,5 @@ Connector traffic usage statistics
 
 ### SEE ALSO
 
-* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
-* [incloud connector usage stats](incloud_connector_usage_stats.md)	 - Show overall traffic statistics
-* [incloud connector usage topk](incloud_connector_usage_topk.md)	 - Show top-K traffic consumption ranking
-* [incloud connector usage trend](incloud_connector_usage_trend.md)	 - Show daily traffic trend
+* [incloud pos](incloud_pos.md)	 - Manage POS Ready traffic prioritization
 

@@ -1,11 +1,15 @@
-## incloud connector usage
+## incloud file
 
-Connector traffic usage statistics
+Manage files
+
+### Synopsis
+
+File operations such as generating pre-signed URLs for uploads.
 
 ### Options
 
 ```
-  -h, --help   help for usage
+  -h, --help   help for file
 ```
 
 ### Options inherited from parent commands
@@ -20,8 +24,6 @@ Connector traffic usage statistics
 
 ### SEE ALSO
 
-* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
-* [incloud connector usage stats](incloud_connector_usage_stats.md)	 - Show overall traffic statistics
-* [incloud connector usage topk](incloud_connector_usage_topk.md)	 - Show top-K traffic consumption ranking
-* [incloud connector usage trend](incloud_connector_usage_trend.md)	 - Show daily traffic trend
+* [incloud](incloud.md)	 - InCloud Platform CLI
+* [incloud file presign](incloud_file_presign.md)	 - Generate a pre-signed URL for file upload
 
