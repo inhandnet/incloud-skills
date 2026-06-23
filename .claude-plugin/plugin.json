@@ -1,6 +1,6 @@
 {
   "name": "incloud",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Skills for managing InCloud Manager platform via incloud CLI",
   "author": {
     "name": "j3r0lin"

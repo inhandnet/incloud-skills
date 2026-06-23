@@ -48,3 +48,4 @@ incloud knowledge search <query> [flags]
 ### SEE ALSO
 
 * [incloud knowledge](incloud_knowledge.md)	 - Search and query the knowledge base
+

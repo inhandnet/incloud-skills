@@ -20,17 +20,22 @@ InCloud Platform CLI
 * [incloud api](incloud_api.md)	 - Make an authenticated API request
 * [incloud auth](incloud_auth.md)	 - Manage authentication
 * [incloud config](incloud_config.md)	 - Manage CLI configuration
-* [incloud connector](incloud_connector.md)	 - Manage InConnect connector networks
+* [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
 * [incloud device](incloud_device.md)	 - Manage devices
 * [incloud feedback](incloud_feedback.md)	 - Submit feedback about the InCloud platform
+* [incloud file](incloud_file.md)	 - Manage files
 * [incloud firmware](incloud_firmware.md)	 - Manage firmwares
+* [incloud knowledge](incloud_knowledge.md)	 - Search and query the knowledge base
 * [incloud license](incloud_license.md)	 - Manage licenses
+* [incloud model](incloud_model.md)	 - Manage AI models
 * [incloud oobm](incloud_oobm.md)	 - Manage Out-of-Band Management resources
 * [incloud org](incloud_org.md)	 - Manage organizations
 * [incloud overview](incloud_overview.md)	 - Platform overview dashboard
+* [incloud pos](incloud_pos.md)	 - Manage POS Ready traffic prioritization
 * [incloud product](incloud_product.md)	 - Manage products
 * [incloud role](incloud_role.md)	 - Manage roles
 * [incloud sdwan](incloud_sdwan.md)	 - Manage SD-WAN networks and devices
+* [incloud touch](incloud_touch.md)	 - Manage DeviceTouch remote access
 * [incloud tunnel](incloud_tunnel.md)	 - Manage remote access tunnels
 * [incloud update](incloud_update.md)	 - Update incloud CLI to the latest version
 * [incloud user](incloud_user.md)	 - Manage users

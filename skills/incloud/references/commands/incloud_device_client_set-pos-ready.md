@@ -1,34 +1,38 @@
 ## incloud device client set-pos-ready
 
-Set POS Ready status for a client
+Set POS priority level for a client
 
 ### Synopsis
 
-Enable or disable POS Ready status for a client on the specified device.
+Set the POS traffic priority level for a client.
+
+Levels:
+  priority  prioritize this client's POS traffic
+  default   no special handling (equivalent to unmarked)
+  bypass    exclude this client from POS handling
 
 ```
-incloud device client set-pos-ready <device-id> [flags]
+incloud device client set-pos-ready <client-id> [flags]
 ```
 
 ### Examples
 
 ```
-  # Enable POS Ready for a client
-  incloud device client set-pos-ready DEVICE_ID --mac FC:5C:EE:8C:90:93 --enabled
+  # Prioritize a client's POS traffic
+  incloud device client set-pos-ready 69b8c537e7f8d2c1e5fffdbc --level priority
 
-  # Disable POS Ready
-  incloud device client set-pos-ready DEVICE_ID --mac FC:5C:EE:8C:90:93 --enabled=false
+  # Reset to default
+  incloud device client set-pos-ready 69b8c537e7f8d2c1e5fffdbc --level default
 
-  # Short form
-  incloud dev client set-pos-ready DEVICE_ID --mac FC:5C:EE:8C:90:93 --enabled
+  # Bypass a client
+  incloud dev client set-pos-ready 69b8c537e7f8d2c1e5fffdbc --level bypass
 ```
 
 ### Options
 
 ```
-      --enabled      Enable or disable POS Ready
-  -h, --help         help for set-pos-ready
-      --mac string   Client MAC address (required)
+  -h, --help           help for set-pos-ready
+      --level string   POS priority level: priority, default, or bypass (required)
 ```
 
 ### Options inherited from parent commands
