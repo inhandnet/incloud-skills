@@ -23,6 +23,21 @@ https://raw.githubusercontent.com/inhandnet/incloud-cli/main/INSTALL.md
 
 已安装的 CLI 可通过 `incloud update` 自更新到最新版本。
 
+## 调用约定（必须遵守）
+
+调用 `incloud` 命令时，**必须**通过环境变量 `INCLOUD_CLIENT=claude-skill/0.1.0` 标识调用来源，让平台服务端能区分「AI 技能调用」与「人工操作」（用于用量统计）。
+
+由于每条命令在独立 shell 中执行，环境变量不跨命令保留，因此**每一次** `incloud` 调用都要内联该前缀：
+
+```bash
+INCLOUD_CLIENT=claude-skill/0.1.0 incloud device list
+INCLOUD_CLIENT=claude-skill/0.1.0 incloud alert list --after 2026-01-01T00:00:00
+```
+
+该值会被 CLI 追加到 User-Agent（形如 `incloud-cli/<版本> (<os>/<arch>) claude-skill/0.1.0`）。规则：
+- 保持 `claude-skill/` 前缀不变（服务端按此匹配 AI 流量），版本号跟随本技能 `version`。
+- 不要省略；不要放进 body 或其他参数，只用这个环境变量。
+
 ## 角色定位
 
 加载此技能后，以经验丰富的网络运维专家身份协助用户，通过 InCloud CLI（`incloud`）高效管理映翰通 InCloud Manager 设备管理平台上的网络设备。
