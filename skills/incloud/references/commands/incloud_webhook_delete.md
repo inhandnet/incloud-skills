@@ -1,0 +1,43 @@
+## incloud webhook delete
+
+Delete a webhook
+
+### Synopsis
+
+Delete a message webhook by ID.
+
+```
+incloud webhook delete <webhook-id> [flags]
+```
+
+### Examples
+
+```
+  # Delete a webhook (will prompt for confirmation)
+  incloud webhook delete 507f1f77bcf86cd799439011
+
+  # Skip confirmation
+  incloud webhook delete 507f1f77bcf86cd799439011 --yes
+```
+
+### Options
+
+```
+  -h, --help   help for delete
+  -y, --yes    Skip confirmation prompt
+```
+
+### Options inherited from parent commands
+
+```
+      --context string   Override active context (env: INCLOUD_CONTEXT)
+      --debug            Enable debug output (env: INCLOUD_DEBUG)
+      --jq string        Filter JSON output using a jq expression (implies -o json)
+  -o, --output string    Output format: json, table, yaml (default: table for TTY, json otherwise)
+      --tenant string    Switch organization context by ID (env: INCLOUD_TENANT)
+```
+
+### SEE ALSO
+
+* [incloud webhook](incloud_webhook.md)	 - Manage message webhooks
+
