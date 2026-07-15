@@ -1,10 +1,11 @@
-# v0.5.0 (2026-06-23)
+# v0.5.0 (2026-07-15)
 
 ## 新功能
 - **POS Ready 管理** — 新增 `pos` 命令组（clients/forwarded/device-hits/marked-clients/vendor-hits/vendor-summary/client-types 及 rules get/set/list），覆盖 POS 优先级查询、命中观测和自定义规则管理
 - **POS 管理主题指南** — 新增 `references/pos-management.md`，说明 priority/default/bypass 三态含义、典型问法映射和 custom-rules 用法
 
 ## 改进
+- **INCLOUD_CLIENT 调用标识** — skill 调用 CLI 时统一设置 `INCLOUD_CLIENT=claude-skill`，平台侧可区分 AI skill 调用与人工操作
 - **POS 触发词** — SKILL.md frontmatter 增加 POS 相关意图触发词，命令速查表新增 POS Ready 段
 - **set-pos-ready 改造** — `device client set-pos-ready` 改用 `--level priority|default|bypass`（针对 client-id），对齐平台新的三级优先级模型
 
