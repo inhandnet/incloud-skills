@@ -1,10 +1,3 @@
-# Unreleased
-
-## 移除
-- **`knowledge ask`** — 服务端 `/api/v1/knowledge/ask` 端点自 2026-04 起全量 500 且已决定下线（IM-3031），CLI 侧已移除该命令（inhandnet/incloud-cli#7）。同步删除 SKILL.md 速查表条目、`references/commands/incloud_knowledge_ask.md` 及索引引用；`knowledge search` 不受影响
-
----
-
 # v0.5.0 (2026-07-15)
 
 ## 新功能
