@@ -1,6 +1,6 @@
 # 知识库检索策略
 
-使用 `incloud knowledge search` 检索，不要用 `knowledge ask`（那是让另一个 AI 代答，不够准确）。
+使用 `incloud knowledge search` 检索。
 
 用 Agent 工具启动 subagent，目标是找到与问题相关的文档原文片段返回给主流程。
 

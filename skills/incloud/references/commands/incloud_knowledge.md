@@ -1,10 +1,10 @@
 ## incloud knowledge
 
-Search and query the knowledge base
+Search the knowledge base
 
 ### Synopsis
 
-Search device documentation and ask questions powered by AI.
+Search device documentation.
 
 ### Options
 
@@ -25,6 +25,5 @@ Search device documentation and ask questions powered by AI.
 ### SEE ALSO
 
 * [incloud](incloud.md)	 - InCloud Platform CLI
-* [incloud knowledge ask](incloud_knowledge_ask.md)	 - Ask a question to the knowledge base
 * [incloud knowledge search](incloud_knowledge_search.md)	 - Search the knowledge base
 
