@@ -47,5 +47,5 @@ incloud knowledge search <query> [flags]
 
 ### SEE ALSO
 
-* [incloud knowledge](incloud_knowledge.md)	 - Search and query the knowledge base
+* [incloud knowledge](incloud_knowledge.md)	 - Search the knowledge base
 

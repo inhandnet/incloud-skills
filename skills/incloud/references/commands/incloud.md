@@ -18,6 +18,7 @@ InCloud Platform CLI
 * [incloud activity](incloud_activity.md)	 - View activity logs
 * [incloud alert](incloud_alert.md)	 - Manage alerts
 * [incloud api](incloud_api.md)	 - Make an authenticated API request
+* [incloud apidoc](incloud_apidoc.md)	 - Download the InCloud public API spec for integration
 * [incloud auth](incloud_auth.md)	 - Manage authentication
 * [incloud config](incloud_config.md)	 - Manage CLI configuration
 * [incloud connector](incloud_connector.md)	 - Manage InCloud Manager connector networks
