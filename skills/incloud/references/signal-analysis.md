@@ -1,12 +1,47 @@
 # 蜂窝网络信号质量分析参考
 
-## 获取信号数据
+信号强度/质量指标与网络性能指标（延迟/抖动/丢包）来自**两个不同的命令**，判断下表
+「网络性能」三行时必须执行第二步，否则那三行无数据可依。
+
+## 1. 获取信号数据（信号强度与质量）
 
 ```bash
-incloud device antenna <id>
+incloud device antenna <id> --after <start> --before <end>
 ```
 
-返回包含多个 SIM 卡的时序信号数据，每条记录包含信号强度、质量、网络性能等指标。
+返回包含多个 SIM 卡的时序信号数据。
+
+> 该命令打的是 `/api/v1/devices/{id}/antenna-signal`，**只返回信号电平类指标**
+> （RSRP / RSRQ / SINR / ssRsrp / ssRsrq / ssSinr），**不含 latency / jitter / loss**。
+
+## 2. 获取网络性能数据（latency / jitter / loss）
+
+```bash
+# 先取上行链路名（如 cellular1 / wan1）
+incloud device uplink <id> -o json
+
+# 再按链路名取性能时序
+incloud device uplink perf <id> --name <uplink_name> -o json
+```
+
+同样支持 `--after` / `--before` 限定时间范围。
+
+`-o json` 输出是**列式结构**：字段名在 `columns` 数组里，采样在 `values` 数组里按位置
+对应。下表「网络性能」的 latency / jitter 两行对应 `latencyMicroseconds` /
+`jitterMicroseconds` 字段。
+
+### 探测超时的采样
+
+`latencyMicroseconds` / `jitterMicroseconds` 可能带一个伴生状态字段，取值只有一种：
+
+| 状态字段值 | 含义 | 正确表述 |
+|-----------|------|---------|
+| `latencyStatus` / `jitterStatus` = `"timeout"` | 探测超时，数值字段为 `null` | 「该采样探测超时」 |
+
+出现状态字段时不要把该采样参与统计（平均值、最大值）或写进结论。**没有状态字段就是
+正常实测值**，按下表阈值判断——包括那些看起来很大的整数（如 `2000000`、`4000000`，
+即 2 秒和 4 秒的实测延迟）：它们是真实测量值，属于严重劣化但真实存在的链路状况，
+不要当成探测异常忽略掉。
 
 ## 信号质量评估标准
 
@@ -23,9 +58,13 @@ incloud device antenna <id>
 | 信号质量 | RSRQ (4G 信号质量) | -34 到 2.5 dB | > -10 | -10 到 -15 | -15 到 -20 | < -20 |
 | 信号质量 | SS-RSRQ (5G 信号质量) | -43 到 20 dB | > -10 | -10 到 -15 | -15 到 -25 | < -25 |
 | 信号质量 | SINR/SS-SINR (信噪比) | -23 到 40 dB | > 20 | 10 到 20 | 0 到 10 | < 0 |
-| 网络性能 | latency (网络延迟) | 0 到 100000 ms | < 100 | 100 到 200 | 200 到 300 | > 300 |
-| 网络性能 | jitter (抖动) | 0 到 100000 ms | < 10 | 10 到 20 | 20 到 30 | > 30 |
+| 网络性能 | `latencyMicroseconds` (网络延迟) | 0 到 100000000 | < 100000 | 100000 到 200000 | 200000 到 300000 | > 300000 |
+| 网络性能 | `jitterMicroseconds` (抖动) | 0 到 100000000 | < 10000 | 10000 到 20000 | 20000 到 30000 | > 30000 |
 | 网络性能 | loss (丢包率) | 0 到 1 | < 0.01 | 0.01 到 0.05 | 0.05 到 0.1 | > 0.1 |
+
+> 「网络性能」三行的阈值与字段值**同量纲，直接比较，不要做任何换算**。
+> 例：`latencyMicroseconds: 42069` 小于 100000，即「优秀」；`loss: 0.05` 即 5%，
+> 属「一般」。
 
 ### 其他辅助指标
 
