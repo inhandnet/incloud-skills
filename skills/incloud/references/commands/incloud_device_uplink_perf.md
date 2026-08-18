@@ -6,6 +6,17 @@ Show uplink performance trend
 
 Show uplink performance metrics (throughput, latency, jitter, loss) over time for a specific device uplink.
 
+The loss field is a fraction (0.05 = 5%), not a percentage.
+
+-o json / -o yaml / --jq output is columnar: field names appear in "columns" and
+the samples in "values", positionally aligned, one array per row. A
+"latencyStatus" / "jitterStatus" column is appended only when at least one
+sample is not a measurement:
+  "timeout"   the probe timed out for that sample; the value is null.
+
+Table output is flattened into row objects with different, shorter field
+names.
+
 ```
 incloud device uplink perf <device-id> [flags]
 ```

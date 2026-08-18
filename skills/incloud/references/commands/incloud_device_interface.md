@@ -6,6 +6,13 @@ Show device network interfaces
 
 Show network interface information for a specific device.
 
+In -o json / -o yaml / --jq output, a "latencyStatus" / "jitterStatus" field
+appears next to the value (including on nested entries such as wan[]) when the
+value is not a measurement:
+  "timeout"   the probe timed out; the numeric field is null.
+
+Table output uses different, shorter field names.
+
 ```
 incloud device interface <device-id> [flags]
 ```

@@ -6,6 +6,13 @@ View MQTT communication logs
 
 View MQTT message logs for a device, including publish, connect, and disconnect events.
 
+In -o json / -o yaml / --jq output, a "latencyStatus" / "jitterStatus" field
+appears inside the reported message payloads when the value is not a
+measurement:
+  "timeout"   the probe timed out; the numeric field is null.
+
+Table output echoes the payload with its original field names.
+
 ```
 incloud device log mqtt <device-id> [flags]
 ```

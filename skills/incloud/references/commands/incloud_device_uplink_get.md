@@ -6,6 +6,12 @@ Get uplink details
 
 Get detailed information for a specific uplink by its ID.
 
+In -o json / -o yaml / --jq output, a "latencyStatus" / "jitterStatus" field
+appears when the value is not a measurement:
+  "timeout"   the probe timed out; the numeric field is null.
+
+Table output uses different, shorter field names.
+
 ```
 incloud device uplink get <uplink-id> [flags]
 ```

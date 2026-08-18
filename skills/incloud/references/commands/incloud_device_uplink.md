@@ -6,6 +6,13 @@ Show device uplinks
 
 Show uplink (WAN/Cellular/WiFi) information for a specific device.
 
+In -o json / -o yaml / --jq output, a "latencyStatus" / "jitterStatus" field
+appears when the value is not a measurement:
+  "timeout"   the probe timed out; the numeric field is null.
+The status fields are absent for normal measurements.
+
+Table output uses different, shorter field names.
+
 ```
 incloud device uplink <device-id> [flags]
 ```

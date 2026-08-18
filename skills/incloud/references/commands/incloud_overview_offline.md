@@ -6,6 +6,9 @@ Offline analysis and top devices
 
 Show top-N offline devices and offline statistics list.
 
+Table output uses different, shorter field names and renders the offline
+durations as human-readable strings (e.g. "1d 1h 1m").
+
 ```
 incloud overview offline [flags]
 ```
