@@ -2,7 +2,7 @@
 
 ## 移除
 - **`knowledge ask`** — 服务端 `/api/v1/knowledge/ask` 端点自 2026-04 起全量 500 且已决定下线（IM-3031），CLI 侧已移除该命令（inhandnet/incloud-cli#7）。同步删除 SKILL.md 速查表条目、`references/commands/incloud_knowledge_ask.md` 及索引引用；`knowledge search` 不受影响
-- **生成的命令参考文档** — 删除 `skills/incloud/references/` 下 334 个由 `make docs` 生成的子命令文档（IM-3226）。参数签名改由运行时 `incloud <命令> --help` 提供，SKILL.md 速查区负责命令发现性，并补入 `apidoc`、`auth`、`config`、`file`、`model`、`touch`、`version` 七个命令组
+- **生成的命令参考文档** — 删除 `skills/incloud/references/commands/` 下 333 个由 `make docs` 生成的子命令文档（IM-3226）。参数签名改由运行时 `incloud <命令> --help` 提供，SKILL.md 速查区负责命令发现性，并补入 `apidoc`、`auth`、`config`、`file`、`model`、`touch`、`version` 七个命令组
 
 ---
 
