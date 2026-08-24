@@ -138,6 +138,9 @@ incloud tunnel get <tunnel-id>                    # 隧道详情
 incloud tunnel forward <tunnel-id> --token <jwt>  # 转发已有隧道到本地端口（适用于所有隧道：open-cli、open-web、oobm connect）
 incloud tunnel close <tunnel-id>                  # 关闭隧道
 incloud tunnel logs                               # 隧道连接日志
+incloud touch client list/get/create/update/delete/export  # 远程接入客户端（下游端点）
+incloud touch client connections <client-id>      # 某客户端的连接列表
+incloud touch connection create/disconnect        # 建立/断开到客户端的远程接入连接
 ```
 
 ### 平台
@@ -158,7 +161,25 @@ incloud overview trend                            # 设备在线趋势
 incloud webhook list/create/update/delete/test    # 消息 Webhook
 incloud api <method> <path>                       # 通用 API
 incloud feedback create/list/download             # 反馈
+incloud file presign                              # 生成文件上传的预签名 URL
+incloud apidoc [--app star|devicelive] [--lang en|zh]  # 下载公开 API 的 OpenAPI spec
 incloud update                                    # 自更新
+```
+
+### AI 模型
+
+```
+incloud model list/get                            # 边缘设备 AI 模型
+incloud model deploy                              # 下发模型到设备或分组
+```
+
+### CLI 自身
+
+```
+incloud auth login/logout/status                  # 登录、登出、查看认证状态
+incloud config list-contexts/current-context      # 查看环境上下文
+incloud config set-context/use-context/delete-context  # 增改、切换、删除上下文
+incloud version                                   # 查看 CLI 版本
 ```
 
 ### 许可证
@@ -245,7 +266,7 @@ API/CLI 返回的 JSON 中有多个 ID 字段，**极易混淆**，务必区分�
 - **批量操作要分批**：批量写操作（config copy/update、firmware job create、license upgrade/attach 等）每批不超过 50 台设备。高风险操作（配置下发、固件升级）先在单台设备验证成功后再批量推送。执行前告知用户总影响范围和分批计划。
 - **跨资源引用**：需要 ID 时先用对应 list 命令查询（如 `device group list`、`firmware list`、`role list`）。用户提供 SN 时，必须先通过 `incloud device list -q <SN> -f _id,serialNumber` 查出 `_id` 再操作（字段含义见上方"常见 ID 字段辨析"）。
 - **不猜字段名**：不确定资源有哪些字段时，先用 `--output yaml --limit 1` 取一条完整记录查看实际字段名，再按需用 `--fields` 筛选或用 Python 过滤。不要凭猜测使用 `--fields`，错误的字段名会返回空值而非报错。
-- **不许凭记忆拼参数**：执行任何命令前，必须先查 `references/commands/` 目录对应文件确认参数签名，再执行。没有"常用命令已熟悉"的例外——速查表只列命令名，不含参数签名，记忆不可靠。`references/commands/` 目录查不到时再用 `--help`。
+- **不许凭记忆拼参数**：执行任何命令前，必须先跑 `incloud <命令路径> --help` 确认参数签名，再执行。没有"常用命令已熟悉"的例外——速查表只列命令名，不含参数签名，记忆不可靠。
 - **写操作前先 GET**：执行任何 update/delete 前，先用对应的 get 命令取一次当前资源状态，以此为基础构造变更，避免字段遗漏或覆盖。当 CLI 必填项与需求冲突时，以 GET 响应为 payload 基础，直接切换到 `incloud api` 操作。
 - **区分数据时效性**：平台上的数据分三类——已上报的历史数据（告警、在线记录、流量统计等）离线后仍可查且可信；状态类数据（信号、链路、性能等）是最后一次上报的快照，离线后不反映当前状态，引用时须标注采集时间；远程操作（ping、抓包、reboot 等）需要设备此刻在线才能执行。分析数据或建议操作前，先确认设备在线状态，据此判断哪些数据可信、哪些操作可行。设备离线时引导用户现场排查。
 - **善用知识库**：用户问到设备操作方法、功能配置、产品规格等设备文档层面的问题时，读取 `references/knowledge-search.md`，用 Agent 工具按其中的策略启动 subagent 检索知识库，自己阅读理解返回的文档片段后回答。典型场景：某型号怎么配 VPN、设备支不支持某功能、某参数含义是什么、出厂默认值是多少。
@@ -255,16 +276,14 @@ API/CLI 返回的 JSON 中有多个 ID 字段，**极易混淆**，务必区分�
 - 执行写操作前必须获得用户确认，特别是 delete、reboot、restore-defaults、固件升级
 - 不在命令中包含明文密码或敏感凭证
 - 切换环境（`incloud config use-context`）前确认目标环境，避免误操作生产环境
-- 不凭记忆或猜测拼命令参数——先查 `references/commands/` 目录，再执行
+- 不凭记忆或猜测拼命令参数——先跑 `--help`，再执行
 
-## 命令参考文档（references/commands/）
+## 查命令的参数签名
 
-`references/commands/` 目录包含每个子命令的完整 flag 列表和使用示例。命名规则：子命令路径的空格替换为下划线，例如：
+先在上面的「CLI 命令速查」里定位命令名，再跑 `incloud <命令路径> --help` 拿完整 flag 列表、默认值和示例——运行中的 CLI 二进制是参数签名的唯一权威来源。
 
-- `incloud device list` → `references/commands/incloud_device_list.md`
-- `incloud firmware job create` → `references/commands/incloud_firmware_job_create.md`
-
-不确定有哪些子命令、或需要查阅参数时，在 `references/commands/` 目录中搜索、列举、读取——比逐级执行 `--help` 更高效。
+- 速查区里没有的命令：`incloud --help` 列出顶层命令组，`incloud <组> --help` 逐级往下列子命令
+- flag 的取值范围（如 `--level priority|default|bypass`）以 `--help` 输出为准
 
 ## 按需加载参考文档
 
