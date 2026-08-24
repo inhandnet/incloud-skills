@@ -1,10 +1,10 @@
 # incloud-skills 开发约定
 
-## references/commands/ 是自动生成的
+## CLI 参数签名
 
-由 incloud-cli 的 `make docs` 生成（`cmd/docgen/main.go`），**不要手动编辑**。
+CLI 的 flag 和子命令签名以运行中的 `incloud` 二进制为准，跑 `--help` 查。仓库里只维护 `skills/incloud/SKILL.md` 速查区的命令名，让 agent 一次搜索就能定位到命令。
 
-CLI 命令变更后，在 incloud-cli 目录运行 `make docs` 重新生成，再提交到 incloud-skills。
+CLI 新增或改名命令组后，同步更新速查区。
 
 ## 发版流程
 
