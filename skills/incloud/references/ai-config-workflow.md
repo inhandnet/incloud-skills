@@ -19,7 +19,7 @@ incloud device config get <id> -o yaml
 
 # 5. （根据 Schema 构造配置 JSON）
 
-# 6. 写入前校验
+# 6. 写入前校验（带 --device 时校验的是「合并后」的结果，等价于预演第 7 步）
 incloud device config schema validate --device <id> --key <json-key> --payload '<json>'
 
 # 7. 写入配置
@@ -73,6 +73,19 @@ incloud device config schema validate --device <id> --key dns --file config.json
 - 校验通过：stderr 输出 `Validation passed.`，exit code 0
 - 校验失败：输出具体错误路径和原因，exit code 1
 
+**带 `--device` 时，校验的是 payload 合并进设备当前配置之后的结果**，与 `config update`
+的写入语义一致。所以增量 payload 可以直接校验，不需要为了让校验通过而补齐同级字段。
+
+- 设备当前配置本身就不合 schema 的地方（存量问题），会列出来但不判失败——它们不是本次 payload 造成的
+- `--product`/`--version` 模式没有设备配置可合并，仍按整份文档校验
+- `--whole-document` 可强制整份文档校验
+
+```bash
+# 只改 qos 的 user_rules，不必带上 uplink_rules
+incloud device config schema validate --device <id> --key qos \
+  --payload '{"qos":{"user_rules":[...]}}'
+```
+
 ### 参数说明
 
 `--device` 与 `--product`/`--version` 互斥：
@@ -94,7 +107,15 @@ incloud device config schema validate --device <id> --key dns --file config.json
 incloud device config update <id> --payload '{"dns":{"dns1":"223.5.5.5"}}'
 ```
 
-修改时需注意：如果 Schema 中该对象有 `required` 字段，payload 中需包含这些 required 字段（即使值不变），否则可能校验失败。
+**不要为了让校验通过而回填同级字段。** 部分 Schema 在「块级」声明了 `required`（如 `qos` 要求
+同时有 `uplink_rules` 和 `user_rules`）。这类 required 约束的是**合并后的完整配置**，不是你这次
+提交的 payload——`config update` 走增量合并，缺的字段会由设备现有配置补齐。
+
+把 `config get` 读到的现存值原样回填进 payload 是有害的：那会把读取时刻的旧值当成期望值写回去，
+覆盖掉这期间的并发改动，用户以为只改了一项，实际整块被重写。
+
+`schema validate --device` 已经按合并后的结果校验，增量 payload 直接提交即可。若仍报块级
+required 缺失，说明该字段在设备当前配置里确实不存在，这时才需要在 payload 里补上。
 
 ### 数组类型（Array）
 
@@ -183,15 +204,15 @@ incloud device config update <id> --payload '...'
 ```bash
 incloud device config schema get -d <id> wlan_ap -o json  # 1. 查看 WiFi Schema
 incloud device config get <id> -o yaml                     # 2. 找到目标 SSID 的 key ID
-# 3. 只修改 key 字段，但必须包含 required 字段（mode, enabled, ssid）
+# 3. 只改 key 字段即可——mode/enabled/ssid 由设备现有配置补齐，不要回填
 incloud device config update <id> \
-  --payload '{"wlan_ap":{"00005b68f7e4ece6":{"mode":"ap","enabled":true,"ssid":"MyWiFi","key":"newpassword123"}}}'
+  --payload '{"wlan_ap":{"00005b68f7e4ece6":{"key":"newpassword123"}}}'
 ```
 
 ## 注意事项
 
 1. **写入前必须先查 Schema**：不要凭记忆或猜测构造配置 JSON，字段名和结构因产品型号而异
 2. **修改前必须先 GET**：获取当前配置状态，避免覆盖或遗漏
-3. **校验是安全网**：`schema validate` 只做 JSON Schema 语法校验，不检查业务逻辑（如依赖关系）。校验通过不代表配置一定合理
+3. **校验的范围有边界**：`schema validate --device` 校验的是 payload 合并进当前配置后的结果，与 `update` 的写入语义一致；但它只做 JSON Schema 校验，不检查业务逻辑（如依赖关系、IPPT 互斥）。校验通过不代表配置一定合理
 4. **Version 匹配**：config-documents 按固件版本存储。设备当前固件版本可能没有对应的 Schema 数据，需要找最近的可用版本
 5. **设备必须在线**：配置写入需要设备在线。离线设备的配置变更会在设备上线后自动下发
