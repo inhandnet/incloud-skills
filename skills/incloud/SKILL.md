@@ -108,6 +108,14 @@ incloud alert get/ack/export                      # 告警详情/确认/导出
 incloud alert rule list/get/create/update/delete  # 告警规则
 ```
 
+### 报表
+
+```
+incloud report policy templates                   # 报表模板（xlsxOnly 的只能 --format xlsx）
+incloud report policy list/get/create/update/delete  # 报表策略（定时/一次性，--timezone 指定 IANA 时区）
+incloud report list/get/download/recreate/delete  # 已生成的报表（download --output-file 保存文件）
+```
+
 ### 固件
 
 ```
