@@ -1,4 +1,17 @@
-# Unreleased
+# v0.6.0 (2026-11-17)
+
+适配 incloud-cli v0.13.0。
+
+## 新功能
+- **报表命令** — SKILL.md 速查区新增 `report` / `report policy`（定时/一次性报表策略，`--timezone` 指定 IANA 时区）（IM-3446）
+- **AP 管理** — 速查区新增 `device ap list`，查看 AC 纳管的 AP 及拓扑，`--snapshot` 读离线快照（IM-3444）
+- **知识库 browse / read** — 速查区新增 `knowledge browse`（产品列表、产品概览、文档章节目录）和 `knowledge read`（读章节全文）
+
+## 改进
+- **知识库检索流程改用文档库** — `knowledge-searcher` agent 与 `references/knowledge-search.md` 去掉已下线的 `--model` / `--rewrite`，型号直接写进 query；命中后用 `knowledge read` 读全文，`browse` 看文档结构；按返回的 `status` 判断空结果与失败，回答附原文 `url`（IM-3316）
+- **配置下发不再回填现有值** — `references/ai-config-workflow.md` 去掉"payload 需带齐 required 字段"的指引：`schema validate --device` 已按合并后的结果校验，增量 payload 即可，回填读到的旧值会覆盖并发修改（IM-3188）
+- **信号分析补 uplink perf 取数** — `signal-analysis` 补上 latency/jitter/loss 的取数步骤（`device uplink perf`），阈值改为微秒量纲，对齐 CLI v0.11.0 字段名（IM-3180）
+
 
 ## 移除
 - **`knowledge ask`** — 服务端 `/api/v1/knowledge/ask` 端点自 2026-04 起全量 500 且已决定下线（IM-3031），CLI 侧已移除该命令（inhandnet/incloud-cli#7）。同步删除 SKILL.md 速查表条目、`references/commands/incloud_knowledge_ask.md` 及索引引用；`knowledge search` 不受影响
