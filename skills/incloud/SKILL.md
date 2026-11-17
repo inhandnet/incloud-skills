@@ -79,6 +79,7 @@ incloud device client online-events/online-stats   # 终端在线统计
 incloud device client rssi/sinr/throughput         # 终端信号与吞吐
 incloud device datausage/online                    # 设备用量与在线历史
 incloud device asset list/create/update/delete     # 网络资产
+incloud device ap list <id> [--snapshot]          # AC 纳管的 AP 及拓扑（--snapshot 读离线快照）
 incloud device exec ping/traceroute/capture       # 诊断（平台 API）
 incloud device exec reboot/restore-defaults       # 远程控制
 incloud device exec speedtest/speedtest-config    # 速度测试与配置
@@ -225,7 +226,9 @@ incloud pos rules list [--device <id>]            # 列出所有设备的 POS �
 ### 知识库
 
 ```
-incloud knowledge search <query> [--model] [--rewrite] [--limit]  # 检索设备文档
+incloud knowledge search <query> [--limit]       # 检索文档章节（产品名/型号写进 query）
+incloud knowledge browse [<文档路径>] [--product <id>]  # 产品列表 / 产品概览 / 文档章节目录
+incloud knowledge read <chunk_id> [--cursor N]   # 读章节全文
 ```
 
 ### 全局选项
